@@ -53,15 +53,17 @@
 			<div class="row">
 				<div class="col-xs-6">
 					<h2>¿Quiénes somos?</h2>
-					<p class="lead  text-justify">Somos un equipo de estudiantes de la Benemerita Universidad Autonoma de Puebla, de la Facultad de Ciencias de la Computación, lo cual no nos enorgullece nada....
+					<p class="lead  text-justify">Somos un equipo de estudiantes de la Benemerita Universidad Autonoma de Puebla, de la Facultad de Ciencias de la Computación.
 												  </br>
 												  </br>Nuestro Equipo esta conformado de 5 Integrantes:
 												  </br>
-												  </br>&bull; Eric Garcia Perez 		Rol: Lider
-												  </br>&bull; Mario Pacheco Ramírez 	Rol: Gerente de Planeación
-												  </br>&bull; Ricardo Camacho Garza 	Rol: Gerente de Soporte
-												  </br>&bull; Ricardo Quintero Salazár 	Rol: Gerente de Desarrollo
-												  </br>&bull; Gerardo Bernal Ortíz 		Rol: Gerente de Calidad	</p>
+												  </br>&bull; Eric Garcia Perez
+												  </br>&bull; Nahúm Águila Pichón
+												  <!--
+												  </br>&bull; Mario Pacheco Ramírez Rol: Gerente de Planeación
+												  </br>&bull; Ricardo Camacho Garza Rol: Gerente de Soporte
+												  </br>&bull; Ricardo Quintero Salazár Rol: Gerente de Desarrollo
+												  </br>&bull; Gerardo Bernal Ortíz 	Rol: Gerente de Calidad	</p> -->
 
 
 
