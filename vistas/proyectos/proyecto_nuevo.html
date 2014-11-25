@@ -1,0 +1,113 @@
+<form action="" id="formulario">
+    <div data-role="fieldcontain" style="display:none;">
+        <label for="proyecto_id_mapa">
+            ID
+        </label>
+		<input name="proyecto_id_proyecto" id="proyecto_id_proyecto" placeholder="" value="" type="text">
+    </div>
+        
+	<div data-role="fieldcontain">
+		<label for="proyecto_nombre">
+			Nombre del proyecto
+		</label>
+		<input name="proyecto_nombre" id="proyecto_nombre" placeholder="" value="" type="text">
+	</div>
+	
+	<div data-role="fieldcontain">
+		<label for="proyecto_tema">
+			Tema del proyecto
+		</label>
+		<input name="proyecto_tema" id="proyecto_tema" placeholder="" value="" type="text">
+	</div>
+	
+	<div data-role="fieldcontain">
+		<label for="proyecto_autor">
+			Autor del proyecto
+		</label>
+		<input name="proyecto_autor" id="proyecto_autor" placeholder="" value="" type="text">
+	</div>
+	
+	<div data-role="fieldcontain">
+		<label for="proyecto_fecha">
+			Fecha de creación
+		</label>
+		<select name="proyecto_fecha" id="proecto_id_fecha_dia">
+        </select>
+		<select name="proyecto_fecha" id="proyecto_id_fecha_mes">
+        </select>
+		<select name="proyecto_fecha" id="proyecto_id_fecha_año">
+        </select>
+	</div>
+	
+	<div id="errores" style="color:#F00"></div>
+            
+    <input type="button" data-theme="a" value="Enviar" onClick="enviar()">
+</form>
+
+<script>
+	function enviar() 
+	{	
+		$('#errores').html('<div>&nbsp</div>');
+				
+		nombre = $('#proyecto_nombre').val();
+		tema = $('#proyecto_tema').val();
+		autor = $('#proyecto_autor').val();
+		fecha = $('#proyecto_fecha').val();
+				
+				
+		error = false;
+		
+		if (nombre.length == 0) 
+		{
+			error = true;
+			$('#errores').append("<div>Ingrese nombre</div>");
+		}
+		
+		if (tema.length == 0) 
+		{
+			error = true;
+			$('#errores').append("<div>Ingrese el tema</div>");
+		}
+				
+		if (autor.length == 0) 
+		{
+			error = true;
+			$('#errores').append("<div>Ingrese nombre del autor</div>");
+		}
+		
+		if (id_fecha == -1) 
+		{
+			error = true;
+			$('#errores').append("<div>Seleccione día</div>");
+		}
+		
+		if (id_fecha == -1) 
+		{
+			error = true;
+			$('#errores').append("<div>Seleccione mes</div>");
+		}
+		
+		if (id_fecha == -1) 
+		{
+			error = true;
+			$('#errores').append("<div>Seleccione año</div>");
+		}
+		
+		if (!error) 
+		{	
+			$.ajax({
+				type:"POST", 
+				//url:"http://192.168.1.72/asignus/drivers/php/clientes_insertar.php", 
+				data:"nombre="+nombre+"&tema="+tema+"&autor="+autor+"&fecha="+fecha, 
+				async:false,
+				success: function(datos)
+				{
+					history.back();
+					//sistema.Grid('cliente/clientes_grid.php','contenedor1');
+				}
+			});		
+									
+		}
+	}		
+</script>
+	

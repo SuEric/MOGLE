@@ -1,0 +1,128 @@
+<form action="" id="formulario">
+    <div data-role="fieldcontain" style="display:none;">
+        <label for="mapa_id_mapa">
+            ID
+        </label>
+		<input name="mapa_id_mapa" id="mapa_id_mapa" placeholder="" value="" type="text">
+    </div>
+        
+	<div data-role="fieldcontain">
+		<label for="mapa_nombre">
+			Nombre del mapa
+		</label>
+		<input name="mapa_nombre" id="mapa_nombre" placeholder="" value="" type="text">
+	</div>
+		
+	<div data-role="fieldcontain">
+		<label for="mapa_proyecto">
+			Nombre del proyecto del mapa
+		</label>
+		<input name="mapa_proyecto" id="mapa_proyecto" placeholder="" value="" type="text">
+	</div>
+	
+	<div data-role="fieldcontain">
+		<label for="mapa_fecha">
+			Fecha de creación
+		</label>
+		<select name="mapa_fecha" id="mapa_id_fecha_dia">
+        </select>
+		<select name="mapa_fecha" id="mapa_id_fecha_mes">
+        </select>
+		<select name="mapa_fecha" id="mapa_id_fecha_año">
+        </select>
+	</div>
+	
+	<div data-role="fieldcontain">
+		<label for="mapa_mundo">
+			Nombre del mundo
+		</label>
+		<input name="mapa_mundo" id="mapa_mundo" placeholder="" value="" type="text">
+	</div>
+	
+	<div data-role="fieldcontain">
+		<label for="mapa_autor">
+			Nombre del autor
+		</label>
+		<input name="mapa_autor" id="mapa_autor" placeholder="" value="" type="text">
+	</div>
+	
+	<div id="errores" style="color:#F00"></div>
+            
+    <input type="button" data-theme="a" value="Enviar" onClick="enviar()">
+</form>
+
+<script>
+	function enviar() 
+	{	
+		$('#errores').html('<div>&nbsp</div>');
+				
+		nombre = $('#mapa_nombre').val();
+		proyecto = $('#mapa_proyecto').val();
+		fecha = $('#mapa_fecha').val();
+		mundo = $('#mapa_mundo').val();
+		autor = $('#mapa_autor').val();
+				
+				
+		error = false;
+		
+		if (nombre.length == 0) 
+		{
+			error = true;
+			$('#errores').append("<div>Ingrese nombre</div>");
+		}
+		
+		if (proyecto.length == 0) 
+		{
+			error = true;
+			$('#errores').append("<div>Ingrese el nombre del proyecto</div>");
+		}
+		
+		if (id_fecha == -1) 
+		{
+			error = true;
+			$('#errores').append("<div>Seleccione día</div>");
+		}
+		
+		if (id_fecha == -1) 
+		{
+			error = true;
+			$('#errores').append("<div>Seleccione mes</div>");
+		}
+		
+		if (id_fecha == -1) 
+		{
+			error = true;
+			$('#errores').append("<div>Seleccione año</div>");
+		}
+		
+		if (mundo.length == 0) 
+		{
+			error = true;
+			$('#errores').append("<div>Ingrese nombre del mundo</div>");
+		}
+				
+		if (autor.length == 0) 
+		{
+			error = true;
+			$('#errores').append("<div>Ingrese nombre del autor</div>");
+		}
+		
+		if (!error) 
+		{	
+			$.ajax({
+				type:"POST", 
+				//url:"http://192.168.1.72/asignus/drivers/php/clientes_insertar.php", 
+				data:"nombre="+nombre+"&proyecto="+proyecto+"&fecha="+fecha+"&mundo="+mundo+"autor"+autor, 
+				async:false,
+				success: function(datos)
+				{
+					history.back();
+					//sistema.Grid('cliente/clientes_grid.php','contenedor1');
+				}
+			});		
+									
+		}
+		
+		
+	}		
+</script>

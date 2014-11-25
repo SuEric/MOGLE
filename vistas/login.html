@@ -1,0 +1,67 @@
+<!------------------------------------------------->
+<!--! Incluye un modal con el formulario        -->
+<!--  de registro, registra de forma asincrona  -->
+<!--  con jquery                                -->
+<!------------------------------------------------->
+
+<!-- Modal de Registro -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Inicie sesión en MOGLE</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-inline well" role="form">
+					<div class="form-group">
+						<input type="text" class="form-control" id="login_usuario" placeholder="Ingrese usuario">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" id="login_password" placeholder="Ingrese contraseña">
+					</div>
+					<div class="form-group">
+						<button type="button" class="btn btn-default" data-dismiss="modal" onclick="autenticarse()">Iniciar</button>
+					</div>
+						<p class="help-block">¿Olvidó su contraseña?</p>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+			</div>
+		</div><!-- Fin modal-content -->
+	</div><!-- Fin modal-dialog -->
+</div><!-- Fin modal -->
+
+<script>
+	function autenticarse() {
+		user = $("#login_usuario").val();
+		password = $("#login_password").val();
+
+		error = false;
+		if (user.length == 0) {
+			error = true;
+			$('.form-group:first-of-type').attr('class', 'form-group has-error has-feedback');
+			$('.form-group:first-of-type').append('<span class="glyphicon glyphicon-remove form-control-feedback"></span>');
+		}
+
+		if (password.length == 0) {
+			error = true;
+			$('.form-group:nth-of-type(2)').attr('class', 'form-group has-error has-feedback');
+			$('.form-group:nth-of-type(2)').append('<span class="glyphicon glyphicon-remove form-control-feedback"></span>');
+		}
+
+		if (!error) {
+			$.ajax({
+				type:"POST",
+				url:"drivers/php/login.php",
+				data:"usuario="+user+"&password="+password,
+				async:true,
+				success: function(dato) {
+					$('.form-control').val('');
+					window.location.href = 'proyectos.php';
+				}
+			});
+		}
+	}
+</script>

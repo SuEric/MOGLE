@@ -1,0 +1,4 @@
+﻿Para testear la matriz de tamaño variable
+
+
+http://localhost/mogle/index.php?mHeight=8&mWidth=5&numLayers=3

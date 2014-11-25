@@ -1,0 +1,170 @@
+<!-------------------------------------->
+<!--! Modal de registro de un nuevo  -->
+<!--  developer                      -->
+<!-------------------------------------->
+
+
+<!-- Modal de Registro -->
+<div class="modal fade" id="developerNuevoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Registro nuevo usuario developer</h4>
+			</div>
+			<div class="modal-body">
+				<form role="form">
+
+					<select class="form-control" id="persona_opciones">
+						<option value="0">Jefe</option>
+						<option value="1">Developer</option>
+					</select>
+
+					<div class="form-group">
+						<label class="control-label" for="developer_nombre">Nombre</label>
+						<input class="form-control" id="developer_nombre" placeholder="Ingrese nombre" type="text">
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="developer_apellidos">Apellidos</label>
+						<input class="form-control" id="developer_nombre" placeholder="Ingrese apellidos" type="text">
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="developer_correo">Correo</label>
+						<input class="form-control" id="developer_correo" placeholder="Ingrese correo" type="text">
+					</div>
+
+					<div class="form-group">
+		           <label>Dia </label>
+		                  <select name="Dia" id = "dia" required>
+		                        <?php
+		                            for($i=1;$i<32;$i++){
+		                                printf("<option value=%d>%d</option>",$i,$i);
+		                            }
+		                        ?>
+		                  </select>
+
+		                  <label>Mes </label>
+		                  <select name="Mes"  id = "mes" required>
+		                    <option value="01">Enero</option>
+		                    <option value="02">Febrero</option>
+		                    <option value="03">Marzo</option>
+		                    <option value="04">Abril</option>
+		                    <option value="05">Mayo</option>
+		                    <option value="06">Junio</option>
+		                    <option value="07">Julio</option>
+		                    <option value="08">Agosto</option>
+		                    <option value="09">Septiembre</option>
+		                    <option value="10">Octubre</option>
+		                    <option value="11">Noviembre</option>
+		                    <option value="12">Diciembre</option>
+		                  </select>
+		                  <label>Año</label>
+		                  <select name="Anno"  id = "anno" required>
+		                  <?php
+		                    for($i=1900;$i<2012;$i++){
+		                                printf("<option value=%d>%d</option>",$i,$i);
+		                            }
+		                  ?>
+		                  </select>
+		          </div>
+
+
+					<div class="form-group">
+						<label class="control-label" for="developer_usuario">Usuario</label>
+						<input class="form-control" id="developer_usuario" placeholder="Ingrese usuario" type="text">
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="developer_pass">Contraseña</label>
+						<input class="form-control" id="developer_pass" placeholder="Ingrese contraseña" type="text">
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="developer_repass">Repetir contraseña</label>
+						<input class="form-control" id="developer_repass" placeholder="Repita su contraseña" type="text">
+					</div>
+
+					<select class="form-control" id="jefes_opciones">
+						<!-- Esto se llena con ajax en document ready -->
+					</select>
+
+					<p class="help-block">Use con cuidado el panel administrativo</p>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" onclick="insertar()">Agregar</button>
+			</div>
+		</div><!-- Fin modal-content -->
+	</div><!-- Fin modal-dialog -->
+</div><!-- Fin modal -->
+
+<script>
+	function insertar()
+	{
+		$('#errores').html('<div>&nbsp</div>');
+
+		nombre = $('#developer_nombre').val();
+		apellidos = $('#developer_apellidos').val();
+		correo = $('#developer_correo').val();
+		usuario = $('#developer_usuario').val();
+		pass = $('#developer_pass').val();
+		repass = $('#developer_repass').val();
+
+		dia = $('#dia').val();
+      mes = $('#mes').val();
+      anno = $('#anno').val();
+
+		error = false;
+
+		if (nombre.length == 0) {
+			error = true;
+		}
+
+		if (usuario.length == 0) {
+			error = true;
+		}
+
+		if (pass.length == 0) {
+			error = true;
+		}
+
+		if (repass != pass || repass.length == 0) {
+			error = true;
+		}
+
+		if (dia.length == 0) {
+         error = true;
+      }
+
+
+		if (mes.length == 0) {
+         error = true;
+      }
+
+
+		if (anno.length == 0) {
+     		error = true;
+     	}
+
+		var nacimiento = anno.concat("-", mes, "-", dia);
+
+		if (!error)
+		{
+			$.ajax({
+				type:"POST",
+				url:"../drivers/php/insertar_developer.php",
+				data:"tipo_persona="+tipo_persona+"&nombre="+nombre+"&apellidos="+apellidos+"&correo="+correo+"&nacimiento="+nacimiento+"&usuario="+usuario+"&password="+pass+"&id_jefe="+id_jefe,
+				async:false,
+				success: function(datos)
+				{
+					history.back();
+					//sistema.Grid('cliente/clientes_grid.php','contenedor1');
+				}
+			});
+
+		}
+
+	}
+</script>
