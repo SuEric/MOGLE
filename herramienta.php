@@ -94,6 +94,7 @@
 						<select class="form-control-xs" id="seleccionTileset">
 							<?php
 								while ($file = readdir($dir_handle)) {
+									if ($file == '.' || $file == '..') continue;
 									//echo "<a 		href =\"$file\" title=\"$file\">$file</a><br>";
 									echo "<option value=\"$file\">$file</option>";
 								}
@@ -105,7 +106,7 @@
 						</button>
 						<br>
 
-						<div id="tileViewer">
+						<div id="tileViewer" style="overflow:auto;">
 
 						</div>
 					</div>
