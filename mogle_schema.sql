@@ -1,3 +1,9 @@
+/*
+	MOGLE
+	Eric & Nahum
+	ESQUEMA DE LA BD
+*/
+
 create database MOGLE;
 use MOGLE;
 
