@@ -6,7 +6,7 @@
 
 	$menu_seleccionado = 1;
 
-	/* DESPUES SE ARREGLARA
+	/*DESPUES SE ARREGLARA
 	if(!isset($_SESSION['tipo_persona'])) {
 		header("Location:drivers/php/cerrar_sesion.php");
 	} */
@@ -42,7 +42,18 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<h1 class="text-center">Proyectos del usuario: <?php echo $_SESSION['nombre'] ?></h1>
+				<h1 class="text-center">Proyectos del usuario: <?php echo $_SESSION['usuario'] ?></h1>
+				<?php
+					if ($_SESSION["cargo"] != NULL) {
+						$html = "<p>Cargo: ";
+						$texto = $_SESSION["cargo"];
+					}
+					else {
+						$html = "<p>Especializado en: ";
+						$texto = $_SESSION["area"];
+					}
+				echo $html.$texto."</p>"
+				?>
 			</div>
 		</div>
 

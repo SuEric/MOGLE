@@ -3,9 +3,9 @@
 	//=============================
 	//! Este script elimina
 	//  un jefe
-	//  
+	//
 	//=============================
-	
+
 	require_once('../../core/Config.php');
 	require_once('../../core/Model.php');
 
@@ -19,11 +19,11 @@
 
 	$str_query = "DELETE FROM jefes where id_jefe = $id_jefe";
 
-	
 
-	$str_query = "DELETE FROM jefes 
+
+	$str_query = "DELETE FROM jefes
 						WHERE id_jefe = '$id_jefe'";
-						
+
 	$model->setQuery($str_query);
 	$model->executeSingleQuery();
 
