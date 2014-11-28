@@ -1,8 +1,9 @@
 <?php
 	session_start();
-	unset($_SESSION["id_persona"]);
-	unset($_SESSION["nombre"]);
-	unset($_SESSION["tipo_persona"]);
-	unset($_SESSION["id_assoc"]);
+
+	unset($_SESSION["idPersona"]);
+	unset($_SESSION["usuario"]);
+	unset($_SESSION["area"]);
+	unset($_SESSION["cargo"]);
 	header("Location: ../../index.php");
 ?>

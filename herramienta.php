@@ -56,7 +56,8 @@
 		<!--!Herramienta -->
 		<div class="row">
 			<div class="col-xs-8 well"> <!-- Parte izquierda -->
-				<h2 class="text-center text-primary">Nombre mapa</h2>
+				<h2 id="nombre_mapa" class="text-center text-primary">Nombre mapa<span id="idMapa" style="display: none"><?=$_GET["idMapa"]?></span></h2>
+
 				<button class="btn btn-default" onclick="importar()">
 					<span class="glyphicon glyphicon-export"> Importar</span>
 				</button>
@@ -104,6 +105,7 @@
 						<button type="button" class="btn btn-default" onclick="cargarTileSet()">
 							<span class="glyphicon glyphicon-eye-open"></span> Cargar Tileset
 						</button>
+
 						<br>
 
 						<div id="tileViewer" style="overflow:auto;">
@@ -118,18 +120,75 @@
 	</div> <!-- Fin container -->
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-1.10.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+   <script src="js/jquery-1.10.js"></script>
+   <!-- Include all compiled plugins (below), or include individual files as needed -->
+   <script src="js/bootstrap.min.js"></script>
 
-    <script>
+	<script>
+		$(document).ready(function() {
+			<?php
+						echo '	createTileSet();';
+						echo '	createMatrix('
+					  .$_GET["mWidth"] . ' ,'
+					  . $_GET["mHeight"] . ' ,'
+					  . $_GET["numLayers"] . ');'
+			?>
+
+			$.ajax({
+			 	type:"POST",
+			 	data:"idMapa="+idMapa,
+			 	dataType:"json",
+			 	url:"drivers/php/mapas_tiles.php",
+			 	async: true,
+				success: function(datos) {
+					/*$.each(datos,function(i,v) {
+						var xB = v.xMapa;
+						var yB = v.yMapa;
+						var tileX = v.xTile;
+						var tileY = v.yTile;
+
+						selectedTileset = "./images/tilesets/"+v.url+".png";
+						texturaBase     = new PIXI.BaseTexture.fromImage(selectedTileset);
+
+						tileSetSprite.texture = new PIXI.Texture.fromImage("./images/tilesets/"+v.url+".png");
+
+						recContenedor = new PIXI.Rectangle(v.xTile * pngSize, v.yTile * pngSize,32,32);
+						console.log("Se selecciono el elemento en posicion: [" + tileX + " , " + tileY + "]");
+						layerSeleccionado = v.capa;
+						console.log(" [" + xB + " , " + yB + "] " + layerSeleccionado);
+
+						spriteInfo       = new Array();
+
+						spriteInfo[layerSeleccionado][xB][yB].textureURL = selectedTileset;
+						spriteInfo[layerSeleccionado][xB][yB].x          = recContenedor.x / pngSize; //¿Magia?
+						spriteInfo[layerSeleccionado][xB][yB].y          = recContenedor.y / pngSize;
+						spriteInfo[layerSeleccionado][xB][yB].layer      = layerSeleccionado;
+
+						//Actualizamos el Sprite con la textura
+						//interact.target.texture = PIXI.Texture.fromImage(spriteInfo[xB][yB]);
+
+						//interact.target.texture = new PIXI.Texture(texturaBase,recContenedor);
+
+						spriteArray[layerSeleccionado][xB][yB].texture = new PIXI.Texture(texturaBase,recContenedor);
+
+						console.log("Se aplico: " + JSON.stringify(spriteInfo[layerSeleccionado][xB][yB]));
+
+						redraw();
+					});*/
+				}
+			});
+		});
+
 		<?php
+			/*
 		 	echo '	createTileSet();';
 		 	echo '	createMatrix('
 					  .$_GET["mWidth"] . ' ,'
 					  . $_GET["mHeight"] . ' ,'
-					  . $_GET["numLayers"] . ');' ;
+					  . $_GET["numLayers"] . ');' ;*/
 		?>
-		</script>
+	</script>
+
+
 </body>
 </html>

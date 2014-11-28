@@ -22,7 +22,7 @@
 	      <ul class="nav navbar-nav navbar-right">
 	        <li> <!-- !¿Login?-->
 		        	<?php
-		        		if(!isset($_SESSION['tipo_persona']))
+		        		if(!isset($_SESSION['cargo']) && !isset($_SESSION['area']))
 		        			echo "<a href='#loginModal' data-toggle='modal' style='color:white;' role='button'>Login</a>";
 		        		else
 		        			echo '<button type="button" class="btn btn-default" onclick="cerrar_sesion()"><span class="glyphicon glyphicon-log-out"> Cerrar sesión</span></button>';

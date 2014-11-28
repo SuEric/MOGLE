@@ -16,8 +16,6 @@
 	<link rel="stylesheet" href="css/bootstrap.css"/>
 </head>
 <body style="background-image: url('images/background.png'); background-repeat:no-repeat;">
-
-
 	<?php
 		include("cabecera.php");
 	?>
