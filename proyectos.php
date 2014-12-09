@@ -122,7 +122,7 @@
 
 					$.each(datos,function(i,v) {
 
-						$('#tbody'+id).append('<tr id='+v.idMapa+'fila"><td>'+v.nombre+'</td><td>'+v.descripcion+'</td><td class="ancho">'+v.anchoM+'</td><td>'+v.altoM+'</td><td>'+v.capa+'</td><td><button id="'+v.idMapa+'" type="button" class="btn btn-primary" onClick="abrirMapa(this.id)">Abrir Mapa</button></td></tr>');
+						$('#tbody'+id).append('<tr id='+v.idMapa+'fila"><td>'+v.nombre+'</td><td>'+v.descripcion+'</td><td class="ancho">'+v.anchoM+'</td><td>'+v.altoM+'</td><td>'+v.capas+'</td><td><button id="'+v.idMapa+'" type="button" class="btn btn-primary" onClick="abrirMapa(this.id)">Abrir Mapa</button></td></tr>');
 					});
 				}
 			});

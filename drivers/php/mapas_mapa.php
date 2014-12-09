@@ -19,7 +19,7 @@
 							descripcion,
 							anchoM,
 							altoM,
-							capa
+							capas
 						FROM
 							Mapa
 						WHERE

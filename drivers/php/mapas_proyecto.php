@@ -11,6 +11,7 @@
 	$model = new Model();
 	$mapas = array();
 
+	if(!isset($_POST["idProyecto"]) ) {echo "Sin parametro";  exit;}
 	$idProyecto = $_POST["idProyecto"];
 
 	$str_query = "SELECT
@@ -19,7 +20,7 @@
 							Mapa.descripcion,
 							anchoM,
 							altoM,
-							capa
+							capas
 						FROM
 							Proyecto,
 							Mapa

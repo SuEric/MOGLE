@@ -54,7 +54,7 @@
 					console.log("Descripcion: " + v.descripcion);
 					console.log("AnchoM: " + v.anchoM);
 					console.log("AltoM: " + v.altoM);
-					window.location.href = 'herramienta.php?idMapa='+v.idMapa+'&mHeight='+v.altoM+'&mWidth='+v.anchoM+'&numLayers='+v.capa;
+					window.location.href = 'herramienta.php?idMapa='+v.idMapa+'&mHeight='+v.altoM+'&mWidth='+v.anchoM+'&numLayers='+v.capas;
 				});
 			}
 		});
